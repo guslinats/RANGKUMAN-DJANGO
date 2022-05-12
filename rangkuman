@@ -1,8 +1,10 @@
 RANGKUMAN-DJANGO
 1. INTRODUCTION
 Belajar Django merupakan lanjutan dari belajar python. Djanggo merupakan web framework (free open-source) yang mengikuti pola arsitektur MVT dan ditulis dengan bahasa Python. Web Framework merupakan software Kerangka kerja yang membantu membuat pengembangan situs web secara mudah dan cepat di dalamnya sudah tersedia fungsi-fungsi yang siap pakai Hai untuk mengakses ke database template dan juga section jadi django adalah web framework untuk membantu membuat situs web.  lalu MVT (model view template) merupakan definitif dari database atau representasi tabel-tabel didatabase views berisi fungsi-fungsi untuk mengatur proses http request dan juga respon template berhubungan dengan tampilan atau user interface yang isinya file html ini adalah tiga komponen utama untuk ia membangun sebuah aplikasi. 
+
 2. WORKFLOW 
 Mengenal alur kerja Djanggo. Client melakukan request misalkan meminta url zulhilmi.id/ about atau profil lalu dicek oleh dear ones Apakah request profil ada di aplikasi django jika anda maka akan memilih view yang sesuai lalu dari view di cek lagi apakah request dari client ini membutuhkan data dari database jika membutuhkan data dari database maka video akan melakukan queryset ke model lalu model akan mengambil data dari database direspon ke view datanya akan dilempar ke template lalu direspon ke client ditampilkan. jadi setiap komponen-komponennya model view template memiliki peran masing-masing memiliki tugas masing-masing yang berhubungan satu sama lain.   jika anda maka akan memiliki view tapi jika tidak membutuhkan data itu tidak ada request ke databse dari view akan langsung memilih template lalu direspon ke client. jadi queryset di sana sifatnya opsional Jadi tergantung dari request jika request nya tidak membutuhkan database dari View bisa langsung memilih template dan direspon ke client.
+
 3. APA SAJA YANG DIBUTUHKAN? 
 Tools apa saja yang dibutuhkan untuk memulai dengan Django. 
 - Pertama CMD atau terminal tools ini digunakan untuk menginstal Django membuat Project membuat tabs menjalankan server dan lain-lain. 
@@ -10,4 +12,64 @@ Tools apa saja yang dibutuhkan untuk memulai dengan Django.
 - Ketiga Web Browser karena kita membuat aplikasi web yang hasilnya harus dilihat lewat browser maka kita membutuhkan tools ini. 
 - Keempat Python. 
 - Terakhir yang kita butuhkan adalah Django itu sendiri.
+
+Struktur Project Django 
+Struktur project Django dapat di bagi menjadi 2 :
+  1. Folder Konfigurasi Django
+  2. Folder Project Django
+
+      1. Folder Konfigurasi Django
+1. __init__.py => Merupakan Sebuah File yang memberitahu bahwa folder ini merupakan sebuah packages 
+2. Settings.py => Merupakan sebuah File yang yang berisi file setting dari project seperti registrais project, database, auth, dll.
+3. Urls.py => Merupakan sebuah file yang berfungsi untuk mengatur routing dari project
+4. wsgi.py => merupakan sebuah Web Server Gateway Interface
+      2. Folder Project Django
+1. Model => merupakan sebuah file yang akan disi dengan model dari 	projcet biasanya di tulis kode yang berhubungan dengan model database 	( beckend).
+2. View => Merupakan sebuah file yang mengurus masalah tampilan dari 	project kita.
+3. Template => Merupakan sebuah folder yang berisi template HTML
+4. Statis => Merupkan sebuah folder yang berisi file - file statis yang akan 	digunakn project kita, biasanya diisi dengan CSS,Javascript,Bootstrap dll.
+
+4. Membuat Project 
+cd Desktop Untuk menyimpan Project di Halaman Desktop
+Django-admin startproject perpus. Perintah ini untuk membuat Project baru Bernama Perpus
+-	Manage.py. Ini adalah file Perintah untuk berinteraksi dengan Project Django
+-	__init__.py. Untuk memberitahukan Python bahwa Perpus adalah sebuah Package
+-	Setting.py. Berisikan File Konfigurasi / Pengaturan seperti Konfigurasi Template, Database, dll
+-	Urls.py. Berisikan pola – pola URL
+-	Wsgi.py. Untuk development Project yang melibatkan Web server yang kompetibel dengan Wsgi / Mengonline-kan Project
+
+5. Basic Routing 
+Client memberikan Request untuk mengakses Halaman Buku pada Server Django namun PAGE NOT FOUND. Karena URL Buku yang di Request belum ada di Server. Untuk dapat melayani Request dari Client, harus dibuatkan URL baru seperti pada gambar berikut. Jika sudah, maka Request dari Client akan dapat terpenuhi.
+
+6. Membuat APPS 
+Apps adalah sebuah aplikasi pada Django yang mempunyai Model Database, View, Template, dan URLCons. Setiap Project di Django mempunyai Apps dan bisa lebih dari satu Apps.
+
+7. Membuat View
+Alur yang digunakan untuk membuat Views ini adalah Client, URLConf, View dan memberikan Response kepada Client. Views diciptakan untuk memenuhi Request dari Client.
+
+8. Template
+Pada tahap ini, Alur yang digunakan mulai berkembang. Dimulai dari Client, URLConf, View, dan Template. Pada bagian Settings.py Line 58. Tambahkan ‘DIRS’ : [‘template’] Buat Folder templates satu Level dengan settings, lalu buiat buku.html Membuat HTML sederhana  Lalu ubah Views.py
+
+9. Django Template Language
+1.	Substitusi Variabel : Untuk menampilkan Variabel ke Template yang dilemparkan dari Views
+2.	Filter : Untuk memodifikasi Variabel yang akan ditampilkan
+3.	Tags : Untuk melakukan control Flow seperti Looping, If Else, Include, dll untuk mengambil file eksternal
+
+10. Template Extending
+Template dasar untuk semua Halaman.  Template utama yang isinya Base.html adalah file html utama yang akan menampung konten – konten dari Template Apps. Didalam Apps akan dibuat folder template yang isinya hanya bagian – bagian konten. Bagian Konten akan diextend / dimasukkan kedalam Base.html
+
+11. Static Files 
+Static File adalah kumpulan File CSS, Java Script, dan gambar. Static File ini digunakan untuk mempercantik / memperindah tampilan Aplikasi yang dibuat dan memerikan pengalaman kenyamanan saat Aplikasi digunakan. 
+
+12. Setup Boostrap
+Tahap ini cukup mudah dilakukan karena kita hanya perlu memindahkan file – file CSS dan Java Script kedalam Folder static yang telah di Set Up. Download Bootstrap dan JQuery yang akan digunakan. Selanjutnya panggil file – file tersebut di Base.html
+
+13. Setup Database
+Django menggunakan DBMS Sqlite 3 dengan nama ‘db.sqlite3’. Ini bisa di Rename sesuai dengan keinginan kita seperti ‘perpustakaan.sqlite3’  Pada saat pertama kali melakukan Runserver, ini akan mengcreate database saja tidak termasuk tabel – tabel nya database. Selanjutnya dilakukan Migrasi dilakukan untuk menyebarkan / menginisialisasi tabel – tabel kedalam db.sqlite3 terhadap database project yang akan dibuat. Jika berhasil melakukan Migrasi, maka akan tampil seperti dibawah ini. 
+
+14. Setuo Database Mysql
+Konfigurasi MySql sebagai DBMS untuk project Django yang akan dibuat. Tahap ini bersifat Opsional, bisa tidak digunakan jika ingin menggunakan sqlite3 sebagai DBMS. Jika ingin menggunakan MySql sebagai DBMS, selanjutnya install MySql Installer. Jika berhasil diinstall, selanjutnya buka MySql Command Line lalu create Database. Konfigurasikan Database ke settings.py 
+
+15. Models 
+Models merupakan definitive dari database atau representasi tabel pada database. Dengan menggunakan models ini, kita tidak perlu lagi menggunakan Query SQL untuk membuat tabel di database. Ketika melakukan Migrasi pada model buku, maka Django akan melakukan Create Tabel Buku sesuai dengan field – field yang ada pada model buku ini. Maka jadilah Tabel pada Database yaitu Tabel Buku.
 
