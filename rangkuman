@@ -1,4 +1,11 @@
 RANGKUMAN-DJANGO
+Kita akan melewati siklus pembuatan aplikasi yaitu :
+a.	Development : mengerjakan projek aplikasi kita atau proses pembuatan, pengembangan . kita di awal-awal akan membuat form,model,view,tampilan itu adalah tahapan development atau pengembangan.
+b.	Testing : setelah dilakukan pembuatan otomatis kita akan melakukan uji coba agar mengetahui kekurangan dari kegiatan tersebut. Mengecek apakah sudah sesuai atau apakah ada bug. Testing ini juga dilakukan saat production.
+c.	Production : aplikasi kita yang sudah di buat sudah di deploy / sudah bisa di publish / sudah bisa digunakan oleh orang lain. Bisa juga user melakukan testing pada saat tahap ini. 
+Alur kerja nya dari client yang melakukan request langsung ditangani oleh web server lalu ke wsgi lalu terakhir ke django atau perputaran yang sudah kita buat yaitu aplikasi perpustakaan tersebut.
+Yang perlu disiapkan adalah app (github,writelab,perpus), terminal, server, domain. 
+
 1. INTRODUCTION
 Belajar Django merupakan lanjutan dari belajar python. Djanggo merupakan web framework (free open-source) yang mengikuti pola arsitektur MVT dan ditulis dengan bahasa Python. Web Framework merupakan software Kerangka kerja yang membantu membuat pengembangan situs web secara mudah dan cepat di dalamnya sudah tersedia fungsi-fungsi yang siap pakai Hai untuk mengakses ke database template dan juga section jadi django adalah web framework untuk membantu membuat situs web.  lalu MVT (model view template) merupakan definitif dari database atau representasi tabel-tabel didatabase views berisi fungsi-fungsi untuk mengatur proses http request dan juga respon template berhubungan dengan tampilan atau user interface yang isinya file html ini adalah tiga komponen utama untuk ia membangun sebuah aplikasi. 
 
@@ -73,3 +80,58 @@ Konfigurasi MySql sebagai DBMS untuk project Django yang akan dibuat. Tahap ini 
 15. Models 
 Models merupakan definitive dari database atau representasi tabel pada database. Dengan menggunakan models ini, kita tidak perlu lagi menggunakan Query SQL untuk membuat tabel di database. Ketika melakukan Migrasi pada model buku, maka Django akan melakukan Create Tabel Buku sesuai dengan field – field yang ada pada model buku ini. Maka jadilah Tabel pada Database yaitu Tabel Buku.
 
+16. Models : Foreign Key 
+Foreign Key digunakan untuk membuat Relasi antar tabel dalam database Relational. Kelompok_id pada gambar dibawah merupakan Foreign Key yang nanti nya akan diisi oleh id tabel kelompok
+
+17. Django Admin 
+Django admin adalah salah satu fitur yang power full ada pada djangon dikatakan power full karena bisa melakukan kru sederhana untuk mengolah data pada model yang kita buat. Biasanya menggunakan django ini untuk mengetes model yang kita buat apakah sudah selesai, sesuai, relasinya sudah benar. Sederhana tetapi sangat membantu dan lagi dajango admin ini bersifat private tidak semabarang orang bisa mengaksesnya harus log in dulu. 
+
+18. Django Admin : modeladmin
+Bagian kedua diepisode kali ini kita akan melakukan custom sederhana terhadap tampilan data buku, fill-fill apa saja yang ditampilkan sebagai informasi seperti judul,penulis,penerbit dan lain-lain. Kita akan menampilkan kotak pencarian dan filter kelompok buku. 
+
+19. ORM (Object-Relation Mapping)
+ORM (object relational mapping) merupakan teknik yang digunakan dalam pemrograman untuk menggunakan basisdata relasional sebagai penyimpanan data dengan bentuk objek. Perlu diketahui django menggunakan teknik ini untuk menggunakan database relasional kenapa? Agar kode python yang ditulis tidak campur aduk dengan query sql. Jadi, ORM ini bertugas sebagai penghubung aplikasi yang dibuat menggunakan database relasional.   
+
+20. Forms : Model Form
+Membuat file baru di perpustakaan dengan nama form. Lalu membuat viewsnya.  
+
+21. Forms : Widgets
+Didalam forms.py ditambahkan widgets,textInput merupakan typenya tambahkan atribut kelas didalamnya.
+
+22. Crud : Menambah Data
+Episode kali ini kita sudah masuk ke queryset, melakukan menambah data,menampilkan,mengubah dan mengapus data. Dari data yang sudah dibuat, selanjutnya kita akan menyimpannya ke dalam database. Prosesnya ada di views yang nantinya akan mengecek apakah data yang di submit oleh user sudah benar atau sudah valid, apabila sudah maka akan di simpan ke database. Lalu buka text editor buka file views. Fungsi dari csrf adalah untuk mngamankan form yang dibuat.
+
+23. Crud : Menampilkan Menambah Data
+Menampilkan data buku yang sudah dibbuat, seperti menampilkan nilai 90/100. Dan menampilkan kelompok seperti prodktif maka hasilnya pasti eror karena kelompok_id menurpakan type integer. Apabila menambah __nama maka akan bisa mengeluarkan hasilnya. Penggunaan queryset tidak sepanjang query. Untuk menampilkan limit pada queryset cukup menambah diujungnya [:3], sedangkan dalam query limit 3.
+
+24. Crud : Mengubah Data
+Mengubah data, disini perannya sangat penting karena saat kita salah dalam melakukan input data maka kita harus mengubahnya atau mengeditnya dengan menggunakan fitur update ini atau fitur ubah data. Ini lebih efektif ya, dibangdingkan dengan saat kita hapus input ulang begitu seterusnya saat melakukan kesalahan. Ubah data sebenarnya sama dengan form menambah data bedanya form ubah data sudah terisi  oleh data yang ingin kita ubah, misalnya seperti ingin mengubah judul yang dari Bhs.Indonesia menjadi IPA, lalu klik simpan dan selesai. 
+
+25. Crud : Hapus Data
+Hapus data juga penting dalam aplikasi, karena apabila kita sudah perlu data tersebut mau di gunakan apalagi. Fungsinya untuk menghapus data yang sudah tidak digunakan oleh user. Sebelum menggunakan action/aksi hapus sebelumnya terlebih dahulu membuat konfirmasi yang berisi apakah yakin ingin menghapus atau tidak. 
+
+26. Authentication : Login & logout
+Authentication merupakan proses verifikasi/validasi identitas user yang terdaftar sebelum mengakses system. Dengan ini kita jadi bisa membatasi user mana saja yang boleh manambah data, mengubah data, dan menghapus data. Jadi tidak sembarang user mengakses halaman-halaman tersebut . django ada system authentication yang akan kita gunakan yang bernama class LoginView untuk membuat namanya sama seperti membuat log in django admin. Berarti saat ingin membuat yang baru bisa mambuat di terminal.
+
+27. Mengakses Username di Template
+Biasanya kita login ke dalam aplikasi ada terdapat informasi user atau siapa yang saat ini sedang login atau yang sedang menggunakan aplikasi. Apabila saat kita log out dan tidak terdapat informasi maka kita bisa menggunakan attributes is_authenticated. Jika user sudah melakukan log in maka tampilkan informasi user nya.
+
+28. Sign up / Tambah User
+Episode kali ini kita akan membuat form sign up agar membuat user bisa login ke aplikasi perpustakaan kita. Sebenarnya ini berhubungan dengan episode django admin karena di dalamnya terdapat username django adminnya. Kalau kita lihat di dokumentasi resmi ini ada sebuah user form yang bernama UserCreationForm untuk membuat user baru. 
+
+29. Upload File
+Episode kali ini kita akan membahas tnetang upload file seperti misalnya kita upload cover buku kita akan menambahkan file baru pada model buku yang bernama cover sehingga di dalam tambah buku nanti akan muncul yang baru seperti cover atau muncul di ubah buku. Di  buku kita akan menambahkan kolom baru yaitu cover sebagai informasi buku yang kita masukkan. 
+
+30. Export File
+Episode kali ini kita akan membuat form sign up agar membuat user bisa login ke aplikasi perpustakaan kita. Sebenarnya ini berhubungan dengan episode django admin karena di dalamnya terdapat username django adminnya. Kalau kita lihat di dokumentasi resmi ini ada sebuah user form yang bernama UserCreationForm untuk membuat user baru. 
+
+31. Virtual Environment 
+Kali ini kita akan membahas tentang virtual environment atau lingkungan virtual, dalam kasus ini lingkungan virtual berguna untuk mengisolasi projek yang kita buat. Setiap kita membuat projek didalam lingkungan virtual ini, projek tersebut akan terisolasi dari direktori system dan memiliki paket python sendiri yang terinstal di lingkugan virtual tersebut. Lingkungan system operasi lebih besar yang didalam nya sudah ada django versi 2.2.12,pillow versi 7.1.2, dan django-import-export versi 2.2.0. kita juga sudah membuat aplikasi perspustakaan di lingkungan system tersebut dengan menggunakan django versi 2.2.12. apabila kita membuat projek di dalam lingkungan virtual environment 1 dan virtual environment 2. Di dalam virtual env 1 terdapat aplikasi perpustakaan yang dibangun dengan django 1.11 sedangkan di dalam virtual env 2 terdapat juga aplikasi yang dibangun dengan django 3.0.8 mysqlclient.
+
+32. Persiapan Deployment
+Deployment adalah kegiatann untuk menyebarkan aplikasi yang telah dikerjakan oleh developer (pengembang). Artinya kita mempublish projekk atau aplikasi yang kita buat untuk dilihat oleh ornang lain. 
+
+33. Deployment Belajar Django
+Kita akan mendeploy aplikasi kita ke server. Dengan awalan mengcoding di laptop kita di local lalu mengupload ke github lalu di clon atau ditarik ke computer server untuk dideploy disana.  
+Saat aplikasi kita dalam mode production disetting dan debug masih nilainya masih dalam true jadi kalau misalkan salah menuju ke halaman pasti akan eror .
+Saat kita dalam mode production kita tidak boleh dibiasakan mengubah tampilan saat mode dalam production, apabila terjadi eror akan berakibat fatal maka itu kalau kita ingin mengambangkan aplikasi yang dalam production kita hanya perlu mengembangkannya di local dan kita masuk ke tahap development atau tahap pengembangan lagi seperti mengubah tampilan atau menambah fitur yang diinginkan. 
